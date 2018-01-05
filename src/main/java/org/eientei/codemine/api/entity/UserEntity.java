@@ -2,10 +2,7 @@ package org.eientei.codemine.api.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class UserEntity {
@@ -23,6 +20,10 @@ public class UserEntity {
 
     @Column(unique = true)
     private String token;
+
+    @Lob
+    @Column
+    private byte[] skin;
 
     public Long getId() {
         return id;
@@ -54,5 +55,13 @@ public class UserEntity {
 
     public void setToken(String token) {
         this.token = token;
+    }
+
+    public byte[] getSkin() {
+        return skin;
+    }
+
+    public void setSkin(byte[] skin) {
+        this.skin = skin;
     }
 }
